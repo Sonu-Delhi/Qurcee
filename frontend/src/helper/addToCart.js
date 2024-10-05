@@ -1,0 +1,27 @@
+import { toast } from "react-toastify"
+import summryApi from "../common"
+
+const addToCart = async(e,id)=>{
+    e.stopPropagation()
+    e.preventDefault()
+
+    const response = await fetch(summryApi.addtoCartProduct.url,{
+        method: summryApi.addtoCartProduct.method,
+        credentials: 'include',  // Include credentials in the request
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({productId: id})
+    })
+    const responseData = await response.json()
+    if(responseData.success){
+        toast.success(responseData.message)
+    }
+    if(responseData.error){
+        toast.error(responseData.message)
+    }
+    return responseData
+
+}
+
+export default addToCart

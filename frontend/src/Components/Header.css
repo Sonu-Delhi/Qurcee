@@ -1,0 +1,29 @@
+.logo{
+    width: 150px;
+    height: 50px;
+    /* display: flex;
+    align-items: center; */
+    /* padding-top: 10px; */
+}
+
+.logo img{
+    width: 100%;
+    height: 100%;
+
+}
+
+@media (max-width:370px) {
+    .logo{
+        width: 120px;
+    }
+
+    .rights_side{
+        gap: 20px !important;
+    }
+}
+
+@media (max-width:330px) {
+    .rights_side{
+        gap: 16px !important;
+    }
+}
