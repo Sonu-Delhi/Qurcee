@@ -13,16 +13,22 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Company</h3>
             <p className="text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.
+              A-63 Naraina Industrial Area Phase-1, New Delhi-110028
+            </p>
+            <p className="text-sm">
+              Email :- sonuyadav885377@gmail.com
+            </p>
+            <p className="text-sm">
+              Phone :- +91 9125403859, +91 9315252382
             </p>
             {/* Social Media */}
           <div className='mt-3'>
             <h3 className="text-2xl font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-2">
-              <Link to="https://chatgpt.com/" className="hover:text-blue-700 text-blue-600 text-2xl"><FaSquareFacebook/></Link>
-              <Link href="#" className="hover:text-blue-700 text-blue-600 text-2xl"><FaSquareTwitter/></Link>
-              <Link href="#" className="hover:text-blue-700 text-blue-600 text-2xl"><FaSquareInstagram/></Link>
-              <Link href="#" className="hover:text-blue-700 text-blue-600 text-2xl"><FaLinkedin/></Link>
+              <Link to="https://facebook.com/" className="hover:text-blue-700 text-blue-600 text-2xl"><FaSquareFacebook/></Link>
+              <Link to={"https://www.twitter.com/"} className="hover:text-blue-700 text-blue-600 text-2xl"><FaSquareTwitter/></Link>
+              <Link to={"https://www.instagram.com/"} className="hover:text-blue-700 text-blue-600 text-2xl"><FaSquareInstagram/></Link>
+              <Link to={"https://www.linkedin.com/"} className="hover:text-blue-700 text-blue-600 text-2xl"><FaLinkedin/></Link>
             </div>
           </div>
           </div>

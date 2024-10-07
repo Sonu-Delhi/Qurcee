@@ -5,6 +5,7 @@ import displayINRCurrency from "../helper/displayCurrency";
 import { Link } from "react-router-dom";
 import addToCart from "../helper/addToCart";
 import Context from "../context";
+import scrollTop from "../helper/scrollTop";
 
 const CategoryWiseProduct = ({ category, heading }) => {
   const [data, setData] = useState([]);
@@ -78,7 +79,7 @@ const CategoryWiseProduct = ({ category, heading }) => {
             return(
               <Link to={"/product/"+product?._id}
               className="w-full min-w-[220px]  md:min-w-[220px] max-w-[220px] md:max-w-[220px] bg-white rounded-sm shadow"
-              key={index}
+              key={index} onClick={scrollTop}
             >
               <div className="bg-slate-200 p-4 h-48 min-w-[220px] md:min-w-[145px] flex items-center justify-center">
                 <img

@@ -91,7 +91,7 @@ const Cart = () => {
     }
   }
   const totalQty = data.reduce((prevValue,currValue)=> prevValue + currValue.quantity,0)
-  const totalPrice = data.reduce((prevValue,currValue)=>prevValue + (currValue.quantity * currValue.productId.sellingPrice),0)
+  const totalPrice = data.reduce((prevsValue,currentValue)=>prevsValue + (currentValue.quantity * currentValue.productId.sellingPrice),0)
 
   return (
     <div className="container mx-auto mt-3">
@@ -170,16 +170,18 @@ const Cart = () => {
               Toatal
             </div>
           ) : (
-            <div className="h-36 my-4 bg-white">
-              <h2 className="text-white bg-blue-600 px-4 py-1">Summary</h2>
-              <div>
+            <div className="h-36 my-4 bg-white rounded">
+              <h2 className="text-white bg-blue-600 rounded px-4 py-1">Summary</h2>
+              <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
                 <p>Quantity</p>
                 <p>{totalQty}</p>
               </div>
-              <div>
+              <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
                 <p>Total Price</p>
-                <p>{totalPrice}</p>
+                <p>{displayCurrency(totalPrice)}</p>
               </div>
+
+              <button className="bg-blue-600 p-2 text-lg mt-2 text-white w-full">Payment</button>
             </div>
           )}
         </div>
