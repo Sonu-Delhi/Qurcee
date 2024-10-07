@@ -15,6 +15,10 @@ import getProductDetails from "../Controller/product/getProductDetails.js";
 import addTocartController from "../Controller/user/addToCartController.js";
 import countAddToCartProduct from "../Controller/user/countAddToCartProduct.js";
 import addToCartViewProduct from "../Controller/user/addToCartViewProduct.js";
+import updateAddToCartProduct from "../Controller/user/updateAddToCartProduct.js";
+import deleteAddToCartProduct from "../Controller/user/deleteAddToCartproduct.js";
+// import increaseQuantity  from "../Controller/user/updateAddToCartProduct.js";
+
 
 const userRouter = express.Router();
 
@@ -39,5 +43,7 @@ userRouter.post("/product-details",getProductDetails)
 userRouter.post("/addtocart",authToken,addTocartController)
 userRouter.get("/countAddToCartProduct",authToken,countAddToCartProduct)
 userRouter.get("/view-cart-product",authToken,addToCartViewProduct)
+userRouter.post("/update-cart-product",authToken,updateAddToCartProduct)
+userRouter.post("/delete-cart-product",authToken,deleteAddToCartProduct)
 // userRouter.get("getCategory",categoriesProduct)
 export default userRouter;

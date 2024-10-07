@@ -34,8 +34,8 @@ const BannerProduct = () => {
   }, [nextImage]);
 
   return (
-    <div className="container mt-1 mx-auto px-4 rounded">
-      <div className="h-84 w-full relative overflow-hidden">
+    <div className="mt-1 mx-auto rounded">
+      <div className="h-86 w-full relative overflow-hidden">
         {/* Navigation buttons */}
         <div className="absolute z-10 w-full h-full md:flex items-center hidden">
           <div className="flex justify-between w-full text-2xl">

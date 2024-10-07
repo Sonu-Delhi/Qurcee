@@ -64,6 +64,14 @@ const summryApi = {
         url:`${backendDomain}/api/countAddToCartProduct`,
         method:"get"
     },
+    updateAddToCartProduct:{
+        url:`${backendDomain}/api/update-cart-product`,
+        method:"post"
+    },
+    deleteAddToCartProduct:{
+        url:`${backendDomain}/api/delete-cart-product`,
+        method:"post"
+    },
     addToCartProductView:{
         url:`${backendDomain}/api/view-cart-product`,
         method:"get"

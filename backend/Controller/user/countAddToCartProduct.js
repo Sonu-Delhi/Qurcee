@@ -16,7 +16,7 @@ const countAddToCartProduct = async(req,res)=>{
         })
     }
     catch(error){
-        console.error(err);
+        // console.error(err);
         res.status(500).send({
             message: error.message || error,
             error:true,

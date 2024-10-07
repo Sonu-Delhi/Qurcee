@@ -60,7 +60,7 @@ const Header = () => {
         </div>
 
         {/* Center - Navigation Links */}
-        <div className={`absolute font-medium  top-11 left-0 lg:w-fit md:w-full bg-slate-200 md:static md:flex items-center justify-center md:space-x-6 transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
+        <div className={`absolute font-medium top-11 left-0 w-full lg:w-fit bg-slate-200 md:static md:flex items-center justify-center md:space-x-1 transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
           <Link to={"/"} className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">Home</Link>
           <a href="#about" className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">About</a>
           <Link to="/alpha-series" className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">Product</Link>

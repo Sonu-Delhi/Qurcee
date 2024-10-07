@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <>
     <div className=''>
-        <CategoryList/>
+        {/* <CategoryList/> */}
         <BannerProduct/>
         <HorizontalCartProduct category={"alpha"} heading={"Latest Collection"} />
         <HorizontalCartProduct category={"bita"} heading={"Latest Bita Collection"}/>
