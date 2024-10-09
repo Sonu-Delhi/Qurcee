@@ -6,12 +6,15 @@ import { connectDb } from './config/db.js';
 import userRouter from './router/index.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors'
+import bodyParser from 'body-parser';
 const PORT = 8080;
 app.use(cors({
     origin: process.env.FRONTEND_URL,
     credentials:true
 }
 ))
+app.use(bodyParser.json({ limit: '10mb' })); // For JSON requests
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(express.json());
 app.use(cookieParser())
 connectDb()

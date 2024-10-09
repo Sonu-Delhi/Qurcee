@@ -72,6 +72,10 @@ const summryApi = {
         url:`${backendDomain}/api/delete-cart-product`,
         method:"post"
     },
+    filterProduct:{
+        url:`${backendDomain}/api/filter-product`,
+        method:"post"
+    },
     addToCartProductView:{
         url:`${backendDomain}/api/view-cart-product`,
         method:"get"

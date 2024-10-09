@@ -17,6 +17,7 @@ import countAddToCartProduct from "../Controller/user/countAddToCartProduct.js";
 import addToCartViewProduct from "../Controller/user/addToCartViewProduct.js";
 import updateAddToCartProduct from "../Controller/user/updateAddToCartProduct.js";
 import deleteAddToCartProduct from "../Controller/user/deleteAddToCartproduct.js";
+import filterProduct from "../Controller/product/filterProduct.js";
 // import increaseQuantity  from "../Controller/user/updateAddToCartProduct.js";
 
 
@@ -45,5 +46,6 @@ userRouter.get("/countAddToCartProduct",authToken,countAddToCartProduct)
 userRouter.get("/view-cart-product",authToken,addToCartViewProduct)
 userRouter.post("/update-cart-product",authToken,updateAddToCartProduct)
 userRouter.post("/delete-cart-product",authToken,deleteAddToCartProduct)
+userRouter.post("/filter-product",filterProduct)
 // userRouter.get("getCategory",categoriesProduct)
 export default userRouter;

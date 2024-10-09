@@ -64,7 +64,7 @@ const Login = () => {
           <form className="mt-6 flex flex-col gap-2" onSubmit={handelSubmit}>
             <div className="grid">
               <label>Email : </label>
-              <div className="border-b-2 rounded-full p-2">
+              <div className="border-b-2 rounded bg-slate-100 p-2 flex">
                 <input
                   type="email"
                   placeholder="enter email"
@@ -104,7 +104,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className="bg-blue-600 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 hover:bg-blue-700 transition-all mx-auto block mt-6"
+              className="bg-blue-600 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:bg-blue-700 transition-all mx-auto block mt-6"
             >
               Login
             </button>

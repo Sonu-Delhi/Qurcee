@@ -62,9 +62,9 @@ const Header = () => {
         {/* Center - Navigation Links */}
         <div className={`absolute font-medium top-11 left-0 w-full lg:w-fit bg-slate-200 md:static md:flex items-center justify-center md:space-x-1 transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
           <Link to={"/"} className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">Home</Link>
-          <a href="#about" className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">About</a>
+          <Link to={"/about"} className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">About</Link>
           <Link to="/alpha-series" className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">Product</Link>
-          <a href="#services" className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">Services</a>
+          <Link to={"/service"} className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">Services</Link>
           <a href="#contact" className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">Contact</a>
         </div>
 
@@ -109,9 +109,9 @@ const Header = () => {
           {/* Login/Logout Button */}
           <div>
             {user?._id ? (
-              <button onClick={handleLogout} className="bg-blue-600 px-3 py-1 rounded-full text-white hover:bg-orange-700">Logout</button>
+              <button onClick={handleLogout} className="bg-blue-600 px-3 py-1 rounded-full text-white hover:bg-blue-700">Logout</button>
             ) : (
-              <Link to="/login" className="bg-blue-600 px-3 py-1 rounded-full text-white hover:bg-orange-700">Login</Link>
+              <Link to="/login" className="bg-blue-600 px-3 py-1 rounded-full text-white hover:bg-blue-700">Login</Link>
             )}
           </div>
           {/* Hamburger Menu Icon for Mobile */}

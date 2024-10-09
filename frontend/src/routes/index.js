@@ -13,14 +13,29 @@ import Addtocart from "../Pages/Addtocart";
 import TermsAndCond from "../Components/TermsAndCond";
 import ProductDetails from "../Pages/ProductDetails";
 import Cart from "../Pages/Cart";
+import Shippingdelivery from "../Pages/Sippinganddelivery";
+import PaymentSecurityHelp from "../Pages/PaymentSecurityHelp";
+import FurnitureCareHelp from "../Pages/FurnitureCareHelp";
+import QurceeWarrantyHelp from "../Pages/QurceeWarrantyHelp";
+import AboutQurceeFurniture from "../Pages/AboutQurceeFurniture";
+import Service from "../Pages/Service";
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App/>,
         children:[
+            
             {
                 path:"",
                 element:<Home/>
+            },
+            {
+              path:"/about",
+              element:<AboutQurceeFurniture/>  
+            },
+            {
+                path:"/service",
+                element:<Service/>
             },
             {
                 path:"/login",
@@ -35,7 +50,7 @@ const router = createBrowserRouter([
                 element:<Signup/>
             },
             {
-                path:"/productcategory/:categoryName",
+                path:"/product-category",
                 element:<ProductCategory/>
             },
             {
@@ -57,6 +72,22 @@ const router = createBrowserRouter([
             {
                 path:"/terms&conditions",
                 element:<TermsAndCond/>
+            },
+            {
+                path:"/sipping&delivery",
+                element:<Shippingdelivery/>
+            },
+            {
+                path:"/payment-security",
+                element:<PaymentSecurityHelp/>
+            },
+            {
+                path:"/furniture-care",
+                element:<FurnitureCareHelp/>
+            },
+            {
+                path:"/warranty",
+                element:<QurceeWarrantyHelp/>
             },
             {
                 path:"/admin-panel",
