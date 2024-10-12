@@ -25,4 +25,29 @@ const updateProductControllers = async (req,res)=>{
     }
 }
 
-export default updateProductControllers
+const deleteProductController = async(req,res)=>{
+    try{
+        if(!uploadProductPermission(req.userId)){
+            throw new Error("Permission denied")
+        }
+        const {productId} = req.params
+        const deleteProduct = await productModel.findByIdAndDelete(productId)
+        res.json({
+            message:"Product deleted successfully",
+            data:deleteProduct,
+            success:true,
+            error:false
+        })
+        
+    }
+    catch (err){
+        res.status(400).json({
+            message: err.message,
+            error:true,
+            success:false
+        })
+    }
+}
+
+
+export default (updateProductControllers,deleteProductController)

@@ -51,7 +51,7 @@ const VirticalCard = ({loading,data=[]}) => {
           data.map((product, index) => {
             return(
               <Link to={"/product/"+product?._id}
-              className="w-full min-w-[220px]  md:min-w-[220px] max-w-[220px] md:max-w-[220px] bg-white rounded-sm shadow"
+              className="w-full min-w-[260px]  md:min-w-[260px] max-w-[260px] md:max-w-[260px] bg-white rounded-sm shadow"
               key={index} onClick={scrollTop}
             >
               <div className="bg-slate-200 p-4 h-48 min-w-[220px] md:min-w-[145px] flex items-center justify-center">
@@ -82,6 +82,7 @@ const VirticalCard = ({loading,data=[]}) => {
             </Link>
             )
           })
+          
         )}
       </div>
   )

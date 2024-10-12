@@ -3,6 +3,7 @@ import summryApi from "../common";
 import Context from "../context";
 import displayCurrency from "../helper/displayCurrency";
 import { MdDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -10,7 +11,7 @@ const Cart = () => {
   const loadingCart = new Array(context.cartProductCount).fill(null);
 
   const fetchData = async () => {
-    setLoading(true);
+    // setLoading(true);
     try {
       const response = await fetch(summryApi.addToCartProductView.url, {
         method: summryApi.addToCartProductView.method,
@@ -26,13 +27,17 @@ const Cart = () => {
       }
     } catch (error) {
       console.error("Error fetching cart data:", error);
-    } finally {
-      setLoading(false);
-    }
+    }// } finally {
+    //   setLoading(false);
+    // }
   };
-
+  const handleLoading = async()=>{
+    await fetchData()
+  }
   useEffect(() => {
-    fetchData();
+    setLoading(true)
+    handleLoading()
+    setLoading(false)
   }, []);
 
   const increaseQty = async (id, qty) => {
@@ -90,6 +95,8 @@ const Cart = () => {
       context.fetchUserAddToCart()
     }
   }
+
+  const navigate = useNavigate()
   const totalQty = data.reduce((prevValue,currValue)=> prevValue + currValue.quantity,0)
   const totalPrice = data.reduce((prevsValue,currentValue)=>prevsValue + (currentValue.quantity * currentValue.productId.sellingPrice),0)
 
@@ -104,30 +111,30 @@ const Cart = () => {
         {/* View Product */}
         <div className="w-full max-w-3xl">
           {loading
-            ? loadingCart.map((el) => {
+            ? loadingCart.map((el,index) => {
                 return (
                   <div
                     className="w-full bg-slate-200 h-32 my-4 border border-slate-300 animate-pulse rounded"
-                    key={el + "Add To Cart Loading"}
+                    key={el + "Add To Cart Loading"+index}
                   ></div>
                 );
               })
             : data.map((product, index) => {
                 return (
                   <div
-                    className="w-full bg-white h-32 my-4 border border-slate-300 rounded grid grid-cols-[128px,1fr]"
+                    className="w-full bg-white h-36 my-4 border border-slate-300 rounded grid grid-cols-[128px,1fr]"
                     key={product?._id + "Add To Cart Loading"}
                   >
-                    <div className="w-32 h-32 bg-slate-200">
+                    <div className="h-36 w-36 bg-slate-200">
                       <img
                         src={product?.productId?.productImage[0]}
                         className="w-full h-full object-scale-down mix-blend-multiply"
                         alt=""
                       />
                     </div>
-                    <div className="px-4 py-2 relative">
+                    <div className="px-6 py-2 relative">
                     {/* Delete Product */}
-                    <div className="absolute right-0 text-red-600 rounded-full p-2 hover:bg-red-600 cursor-pointer hover:text-white" onClick={()=>deleteProduct(product?._id)}>
+                    <div className="absolute right-0 md:right-3 text-red-600 rounded-full p-2 hover:bg-red-600 cursor-pointer hover:text-white" onClick={()=>deleteProduct(product?._id)}>
                       <MdDelete/>
                     </div>
                       <h2 className="text-lg lg:text-2xl text-ellipsis line-clamp-1">
@@ -140,7 +147,7 @@ const Cart = () => {
                       <p className="capitalize text-blue-600 font-medium text-lg">
                         {displayCurrency(product?.productId?.sellingPrice)}
                       </p>
-                      <p className="capitalize text-slate-600 font-semibold text-lg">
+                      <p className="capitalize text-slate-600 font-semibold text-lg hidden md:block">
                         {displayCurrency(product?.productId?.sellingPrice * product?.quantity)}
                       </p>
                       </div>
@@ -181,7 +188,7 @@ const Cart = () => {
                 <p>{displayCurrency(totalPrice)}</p>
               </div>
 
-              <button className="bg-blue-600 p-2 text-lg mt-2 text-white w-full">Payment</button>
+              <button className="bg-blue-600 p-2 text-lg mt-2 text-white w-full" onClick={()=>navigate("/order")}>PROCEE TO CHECKOUT</button>
             </div>
           )}
         </div>

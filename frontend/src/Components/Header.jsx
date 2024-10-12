@@ -5,7 +5,7 @@ import './Header.css';
 // import { GrSearch } from "react-icons/gr";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa"; // Import icons for the hamburger menu
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import summryApi from '../common';
 import { toast } from 'react-toastify';
@@ -17,6 +17,7 @@ import Context from '../context';
 const Header = () => {
   const user = useSelector(state => state?.user?.user);
   const dispatch = useDispatch();
+  const nevigate = useNavigate()
   const [menuDisplay, setMenuDisplay] = useState(false);
   const context = useContext(Context)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -32,6 +33,7 @@ const Header = () => {
     if (data.success) {
       dispatch(setuserDetails(null));
       toast.success(data.message);
+      nevigate("/")
     } else if (data.error) {
       toast.error(data.message);
     }
@@ -52,20 +54,20 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className="bg-slate-200 border-b border-gray-200 shadow-sm fixed w-full z-40">
+    <nav className="bg-slate-400 border-b border-gray-200 shadow-sm fixed w-full z-40">
       <div className="container mx-auto flex items-center justify-between px-4 py-2">
         {/* Left Side - Logo */}
         <div className="flex-shrink-0">
           <Link to="/" className="text-xl font-bold text-gray-800">Qurcce</Link>
         </div>
-
+        
         {/* Center - Navigation Links */}
-        <div className={`absolute font-medium top-11 left-0 w-full lg:w-fit bg-slate-200 md:static md:flex items-center justify-center md:space-x-1 transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
+        <div className={`absolute font-medium top-11 left-0 w-full lg:w-fit bg-slate-400 md:static md:flex items-center justify-center md:space-x-1 transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
           <Link to={"/"} className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">Home</Link>
           <Link to={"/about"} className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">About</Link>
-          <Link to="/alpha-series" className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">Product</Link>
+          <Link to="/buy" className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">Buy</Link>
           <Link to={"/service"} className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">Services</Link>
-          <a href="#contact" className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">Contact</a>
+          <Link to={"/contact-us"} className="block md:inline-block px-4 py-2 text-gray-700 hover:text-gray-900">Contact</Link>
         </div>
 
         {/* Right Side - Profile, Cart, and Login */}

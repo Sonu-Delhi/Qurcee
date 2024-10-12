@@ -19,6 +19,8 @@ import FurnitureCareHelp from "../Pages/FurnitureCareHelp";
 import QurceeWarrantyHelp from "../Pages/QurceeWarrantyHelp";
 import AboutQurceeFurniture from "../Pages/AboutQurceeFurniture";
 import Service from "../Pages/Service";
+import ContactUs from "../Pages/ContactUs";
+import PlaceOrder from "../Pages/PlaceOrder";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -36,6 +38,10 @@ const router = createBrowserRouter([
             {
                 path:"/service",
                 element:<Service/>
+            },
+            {
+                path:"/contact-us",
+                element:<ContactUs/>
             },
             {
                 path:"/login",
@@ -62,7 +68,11 @@ const router = createBrowserRouter([
                 element:<Cart/>
             },
             {
-                path:"/alpha-series",
+                path:"/order",
+                element:<PlaceOrder/>
+            },
+            {
+                path:"/buy",
                 element:<Alpha/>
             },
             {

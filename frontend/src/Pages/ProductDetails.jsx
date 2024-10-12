@@ -1,10 +1,12 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useEffect, useState, useCallback, useContext } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import summryApi from '../common';
 import { FaStar, FaStarHalf } from 'react-icons/fa';
 import displayCurrency from '../helper/displayCurrency';
 // import VirticalCartProduct from '../Components/VirticalCartProduct';
 import CategoryWiseProduct from '../Components/CategoryWiseProduct';
+import addToCart from '../helper/addToCart';
+import Context from '../context';
 
 const ProductDetails = () => {
   const [data, setData] = useState({
@@ -22,7 +24,8 @@ const ProductDetails = () => {
   const [activeImage, setActiveImage] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const {fetchUserAddToCart } = useContext(Context);
+  const navigate = useNavigate()
   const params = useParams();
   const productImageList = new Array(4).fill(null);
 
@@ -68,6 +71,19 @@ const ProductDetails = () => {
   };
   const handleZoomIn = ()=>{
     setZoomIn(false)
+  }
+
+  const handleAddToCart = async (e,id)=>{
+    await addToCart(e,id)
+    fetchUserAddToCart()
+    alert('Product added to cart successfully!')
+
+  }
+
+  const handleByProduct = async(e,id)=>{
+    await addToCart(e,id)
+    fetchUserAddToCart()
+    navigate("/cart")
   }
 
   return (
@@ -155,13 +171,13 @@ const ProductDetails = () => {
               <p className="text-slate-400 line-through">{displayCurrency(data?.price)}</p>
             </div>
             <div className="flex items-center gap-3 my-2">
-              <button className="border-2 border-blue-600 rounded px-3 py-1 min-w-[120px] text-blue-600 font-medium hover:bg-blue-600 hover:text-white transition-all">
+              <button className="border-2 border-blue-600 rounded px-3 py-1 min-w-[120px] text-blue-600 font-medium hover:bg-blue-600 hover:text-white transition-all" onClick={(e)=>handleByProduct(e,data._id)}>
                 Buy
               </button>
               <Link
                 to="/addtocart"
                 className="border-2 border-blue-600 rounded px-3 py-1 min-w-[120px] text-white font-medium bg-blue-600 hover:bg-white hover:text-blue-600 transition-all"
-              >
+                onClick={(e)=>handleAddToCart(e,data._id)}>
                 Add to Cart
               </Link>
             </div>

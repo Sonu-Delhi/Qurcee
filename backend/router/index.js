@@ -18,6 +18,7 @@ import addToCartViewProduct from "../Controller/user/addToCartViewProduct.js";
 import updateAddToCartProduct from "../Controller/user/updateAddToCartProduct.js";
 import deleteAddToCartProduct from "../Controller/user/deleteAddToCartproduct.js";
 import filterProduct from "../Controller/product/filterProduct.js";
+import paymentGatwayControllers from "../Controller/product/paymentGetway.js";
 // import increaseQuantity  from "../Controller/user/updateAddToCartProduct.js";
 
 
@@ -36,6 +37,7 @@ userRouter.put("/updateuser", authToken, updateUser);
 userRouter.post('/addproduct', authToken, uplaodProduct);
 userRouter.get("/get-product",getProduct)
 userRouter.post("/update-product",authToken,updateProductControllers)
+userRouter.post("/delete-product",authToken,deleteAddToCartProduct)
 userRouter.get('/getcategory',getCategoryProduct)
 userRouter.post("/category-product",getCategoryWiseProduct)
 userRouter.post("/product-details",getProductDetails)
@@ -47,5 +49,8 @@ userRouter.get("/view-cart-product",authToken,addToCartViewProduct)
 userRouter.post("/update-cart-product",authToken,updateAddToCartProduct)
 userRouter.post("/delete-cart-product",authToken,deleteAddToCartProduct)
 userRouter.post("/filter-product",filterProduct)
+
+// Payment Gatwey
+userRouter.post("/payment",authToken,paymentGatwayControllers)
 // userRouter.get("getCategory",categoriesProduct)
 export default userRouter;
