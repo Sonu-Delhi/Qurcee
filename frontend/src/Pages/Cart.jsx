@@ -4,6 +4,7 @@ import Context from "../context";
 import displayCurrency from "../helper/displayCurrency";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
 const Cart = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -95,6 +96,26 @@ const Cart = () => {
       context.fetchUserAddToCart()
     }
   }
+  const handlepayment = async()=>{
+    const stripePromise = await loadStripe("pk_test_51PeIJ2KpxteXK8uk7uLpH6Ce6D0s0PM7cfc5YRPBnbubmvQqQUH2lJVFfwpbVjMCiiS5zfi1tUhhwld8kFGRNCIo00dYlTbGSf");
+    const response = await fetch(summryApi.payment.url,{
+      method: summryApi.payment.method,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cartItems:data
+      })
+    })
+    const responseData = await response.json()
+    if(responseData.sessionData?.id){
+      stripePromise.redirectToCheckout({sessionId:responseData.sessionData.id})
+    }
+    // console.log("responseData",responseData.sessionData.id);
+    
+    
+  }
 
   const navigate = useNavigate()
   const totalQty = data.reduce((prevValue,currValue)=> prevValue + currValue.quantity,0)
@@ -178,7 +199,7 @@ const Cart = () => {
             </div>
           ) : (
             <div className="h-36 my-4 bg-white rounded">
-              <h2 className="text-white bg-blue-600 rounded px-4 py-1">Summary</h2>
+              <h2 className="text-white bg-red-600 rounded px-4 py-1">Summary</h2>
               <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
                 <p>Quantity</p>
                 <p>{totalQty}</p>
@@ -188,7 +209,8 @@ const Cart = () => {
                 <p>{displayCurrency(totalPrice)}</p>
               </div>
 
-              <button className="bg-blue-600 p-2 text-lg mt-2 text-white w-full" onClick={()=>navigate("/order")}>PROCEE TO CHECKOUT</button>
+              <button className="bg-blue-600 p-2 text-lg mt-2 text-white w-full" onClick={handlepayment}>PROCEE TO payment</button>
+              {/* <button className="bg-blue-600 p-2 text-lg mt-2 text-white w-full" onClick={()=>navigate("/order")}>PROCEE TO CHECKOUT</button> */}
             </div>
           )}
         </div>

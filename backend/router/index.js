@@ -18,8 +18,11 @@ import addToCartViewProduct from "../Controller/user/addToCartViewProduct.js";
 import updateAddToCartProduct from "../Controller/user/updateAddToCartProduct.js";
 import deleteAddToCartProduct from "../Controller/user/deleteAddToCartproduct.js";
 import filterProduct from "../Controller/product/filterProduct.js";
-import paymentGatwayControllers from "../Controller/product/paymentGetway.js";
-// import increaseQuantity  from "../Controller/user/updateAddToCartProduct.js";
+import paymentController from "../Controller/order/paymentCotroller.js";
+import placeOrder from "../Controller/product/orderController.js";
+import webhooks from "../Controller/order/webhook.js";
+
+
 
 
 const userRouter = express.Router();
@@ -49,8 +52,10 @@ userRouter.get("/view-cart-product",authToken,addToCartViewProduct)
 userRouter.post("/update-cart-product",authToken,updateAddToCartProduct)
 userRouter.post("/delete-cart-product",authToken,deleteAddToCartProduct)
 userRouter.post("/filter-product",filterProduct)
+// userRouter.post("/contact",sendContactEmail)
 
 // Payment Gatwey
-userRouter.post("/payment",authToken,paymentGatwayControllers)
-// userRouter.get("getCategory",categoriesProduct)
+userRouter.post("/checkout",authToken,paymentController)
+userRouter.post("/webhook",webhooks)  //api/webhook
+userRouter.post("/order",authToken,placeOrder)
 export default userRouter;

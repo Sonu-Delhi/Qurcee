@@ -21,6 +21,10 @@ import AboutQurceeFurniture from "../Pages/AboutQurceeFurniture";
 import Service from "../Pages/Service";
 import ContactUs from "../Pages/ContactUs";
 import PlaceOrder from "../Pages/PlaceOrder";
+import Success from '../Pages/Success'
+import Cancel from "../Pages/Cancel";
+import OrderPage from "../Pages/OrderPage";
+// import ContactForm from "../Pages/ContactForm";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -75,6 +79,22 @@ const router = createBrowserRouter([
                 path:"/buy",
                 element:<Alpha/>
             },
+            {
+                path:"/success",
+                element:<Success/>
+            },
+            {
+                path:"/cancel",
+                element:<Cancel/>
+            },
+            {
+                path:"/orders",
+                element:<OrderPage/>
+            },
+            // {
+            //     path:"/contact",
+            //     element:<ContactForm/>                
+            // },
             {
                 path:"/addtocart",
                 element:<Addtocart/>

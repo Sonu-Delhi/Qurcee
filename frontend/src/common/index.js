@@ -41,8 +41,8 @@ const summryApi = {
         url:`${backendDomain}/api/delete-product`,
         method:"post"
     },
-    Payment:{
-        url:`${backendDomain}/api/payment`,
+    Contact:{
+        url:`${backendDomain}/api/contact`,
         method:"post"
     },
     productCategory:{
@@ -87,6 +87,14 @@ const summryApi = {
     addToCartProductView:{
         url:`${backendDomain}/api/view-cart-product`,
         method:"get"
+    },
+    payment:{
+        url:`${backendDomain}/api/checkout`,
+        method:"post"
+    },
+    placeOrder:{
+        url:`${backendDomain}/api/order`,
+        method:"post"
     }
     
     // Addproducts:{
