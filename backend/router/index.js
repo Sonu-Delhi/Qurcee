@@ -20,7 +20,7 @@ import deleteAddToCartProduct from "../Controller/user/deleteAddToCartproduct.js
 import filterProduct from "../Controller/product/filterProduct.js";
 import paymentController from "../Controller/order/paymentCotroller.js";
 import placeOrder from "../Controller/product/orderController.js";
-import webhooks from "../Controller/order/webhook.js";
+// import webhooks from "../Controller/order/webhook.js";
 
 
 
@@ -56,6 +56,6 @@ userRouter.post("/filter-product",filterProduct)
 
 // Payment Gatwey
 userRouter.post("/checkout",authToken,paymentController)
-userRouter.post("/webhook",webhooks)  //api/webhook
+// userRouter.post("/webhook",webhooks)  //api/webhook
 userRouter.post("/order",authToken,placeOrder)
 export default userRouter;
