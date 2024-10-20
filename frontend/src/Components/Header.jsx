@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { setuserDetails } from '../store/userSlice';
 import Role from '../common/role';
 import Context from '../context';
+import CategoryList from './CategoryList';
 
 const Header = () => {
   const user = useSelector(state => state?.user?.user);
@@ -57,8 +58,13 @@ const Header = () => {
     <nav className="bg-slate-400 border-b border-gray-200 shadow-sm fixed w-full z-40">
       <div className="container mx-auto flex items-center justify-between px-4 py-2">
         {/* Left Side - Logo */}
+        <div className='flex items-center gap-7'>
         <div className="flex-shrink-0">
           <Link to="/" className="text-xl font-bold text-gray-800">Qurcce</Link>
+        </div>
+        <div className='hidden lg:block'>
+          <CategoryList/>
+        </div>
         </div>
         
         {/* Center - Navigation Links */}

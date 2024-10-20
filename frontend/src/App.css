@@ -60,6 +60,14 @@
   .imageHover:hover{
     transform: scale(1.05);
   }
+  .categorylist{
+    border-radius: 20px 0px 20px 0px;
+    cursor: pointer;
+    transition: .1s ease-in;
+  }
+  .categorylist:hover{
+    border-radius: 0px 20px 0px 20px;
+  }
 
   @media (width:425px) {
     .smImage{

@@ -47,7 +47,7 @@ const CategoryList = () => {
             <select
               id="category"
               onChange={handleCategoryChange}  // Call the handleCategoryChange function on change
-              className="block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full p-2 text-white categorylist  bg-blue-500 hover:bg-blue-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
               <option value="">--Select a Category--</option>
               {categoryProduct.map((product, index) => (

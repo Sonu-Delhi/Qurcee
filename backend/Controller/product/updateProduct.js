@@ -1,53 +1,36 @@
-import uploadProductPermission from "../../helpers/permission.js"
-import productModel from "../../models/productModel.js"
+import uploadProductPermission from "../../helpers/permission.js";
+import productModel from "../../models/productModel.js";
 
-const updateProductControllers = async (req,res)=>{
-    try{
-        if(!uploadProductPermission(req.userId)){
-            throw new Error("Permission denied")
+const updateProductController = async (req, res) => {
+    try {
+        if (!uploadProductPermission(req.userId)) {
+            throw new Error("Permission denied");
         }
-        const {_id, ...resBody} = req.body
-        const updateProduct = await productModel.findByIdAndUpdate(_id,resBody)
-        res.json({
-            message:"Product update successfuly",
-            data:updateProduct,
-            success:true,
-            error:false
-        })
+        const { _id, ...resBody } = req.body;
         
-    }
-    catch (err){
+        const updateProduct = await productModel.findByIdAndUpdate(_id, resBody, { new: true });
+
+        if (!updateProduct) {
+            return res.status(404).json({
+                message: "Product not found",
+                error: true,
+                success: false
+            });
+        }
+
+        res.json({
+            message: "Product updated successfully",
+            data: updateProduct,
+            success: true,
+            error: false
+        });
+    } catch (err) {
         res.status(400).json({
             message: err.message,
-            error:true,
-            success:false
-        })
+            error: true,
+            success: false
+        });
     }
-}
+};
 
-const deleteProductController = async(req,res)=>{
-    try{
-        if(!uploadProductPermission(req.userId)){
-            throw new Error("Permission denied")
-        }
-        const {productId} = req.params
-        const deleteProduct = await productModel.findByIdAndDelete(productId)
-        res.json({
-            message:"Product deleted successfully",
-            data:deleteProduct,
-            success:true,
-            error:false
-        })
-        
-    }
-    catch (err){
-        res.status(400).json({
-            message: err.message,
-            error:true,
-            success:false
-        })
-    }
-}
-
-
-export default (updateProductControllers,deleteProductController)
+export default updateProductController

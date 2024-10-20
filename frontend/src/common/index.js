@@ -37,6 +37,10 @@ const summryApi = {
         url:`${backendDomain}/api/update-product`,
         method:"post"
     },
+    deleteProdutcs:{
+        url:`${backendDomain}/api/delete`,
+        method:"post"
+    },
     deleteProduct:{
         url:`${backendDomain}/api/delete-product`,
         method:"post"
@@ -94,6 +98,10 @@ const summryApi = {
     },
     placeOrder:{
         url:`${backendDomain}/api/order`,
+        method:"post"
+    },
+    addImage:{
+        url:`${backendDomain}/api/add`,
         method:"post"
     }
     

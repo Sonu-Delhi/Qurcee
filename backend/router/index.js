@@ -21,6 +21,9 @@ import filterProduct from "../Controller/product/filterProduct.js";
 import paymentController from "../Controller/order/paymentCotroller.js";
 import placeOrder from "../Controller/product/orderController.js";
 // import webhooks from "../Controller/order/webhook.js";
+import addProduct from "../Controller/product/addProduct.js";
+import multer from "multer";
+import deleteProductController from "../Controller/product/deleteProductController.js";
 
 
 
@@ -40,6 +43,7 @@ userRouter.put("/updateuser", authToken, updateUser);
 userRouter.post('/addproduct', authToken, uplaodProduct);
 userRouter.get("/get-product",getProduct)
 userRouter.post("/update-product",authToken,updateProductControllers)
+userRouter.post("/delete",authToken,deleteProductController)
 userRouter.post("/delete-product",authToken,deleteAddToCartProduct)
 userRouter.get('/getcategory',getCategoryProduct)
 userRouter.post("/category-product",getCategoryWiseProduct)
@@ -53,6 +57,17 @@ userRouter.post("/update-cart-product",authToken,updateAddToCartProduct)
 userRouter.post("/delete-cart-product",authToken,deleteAddToCartProduct)
 userRouter.post("/filter-product",filterProduct)
 // userRouter.post("/contact",sendContactEmail)
+
+// // Image Storage engine
+// const storage = multer.diskStorage({
+//     destination:"uploads",
+//     filename:(req,file,cb)=>{
+//         return cb(null,`${Date.now()}${file.originalname}`)
+//     }
+// })
+
+// const upload = multer({storage:storage})
+// userRouter.post("/add",upload.single("image"),addProduct)
 
 // Payment Gatwey
 userRouter.post("/checkout",authToken,paymentController)
